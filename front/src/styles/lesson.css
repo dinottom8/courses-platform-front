@@ -1,0 +1,34 @@
+.lesson-container {
+    padding: 48px;
+}
+
+.lesson-wrapper {
+    display: flex;
+    gap: 24px;
+}
+
+.lesson-video-wrapper {
+    background-color: #d9d9d9;
+    width: 400px;
+    height: 225px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.lesson-description-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.lesson-description-wrapper h3 {
+    font-size: 32px;
+}
+
+.lesson-buttons {
+    margin-top: 48px;
+    display: flex;
+    gap: 16px;
+}

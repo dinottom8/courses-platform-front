@@ -1,0 +1,39 @@
+.last-lessons-container {
+    width: 420px;
+    background-color: #D9D9D9;
+    height: calc(100vh - 188px);
+    display: flex;
+    padding: 48px 24px;
+}
+
+.video-placeholder {
+    background-color: #fff;
+    width: 160px;
+    height: 90px;
+}
+
+.last-lesson-wrapper {
+    display: flex;
+    align-items: center;
+    height: fit-content;
+    gap: 24px;
+}
+
+.last-lesson-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.last-lesson-title {
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.last-lesson-subject {
+
+}
+
+.last-lesson-callout {
+    color: #5C5C5C;   
+}
