@@ -1,23 +1,22 @@
-require('dotenv').config();
+// back/server.js
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors'); // opcional, caso vá chamar de outro domínio
+const cors = require('cors');
 
 const authRouter = require('./routes/auth');
 
 const app = express();
-const port = process.env.PORT || 3000;
 
-// Conecta ao MongoDB
+// Conecta ao MongoDB (variáveis definidas no Vercel UI)
 async function main() {
-  const dbUser = process.env.DB_USER;
+  const dbUser     = process.env.DB_USER;
   const dbPassword = encodeURIComponent(process.env.DB_PASSWORD);
-  const dbName = process.env.DB_NAME;
+  const dbName     = process.env.DB_NAME;
   const uri = `mongodb+srv://${dbUser}:${dbPassword}@${dbName}.rxmduir.mongodb.net/${dbName}?retryWrites=true&w=majority`;
 
   try {
     await mongoose.connect(uri, {
-      useNewUrlParser: true,
+      useNewUrlParser:    true,
       useUnifiedTopology: true,
     });
     console.log('Successfully connected with database!');
@@ -26,25 +25,19 @@ async function main() {
     process.exit(1);
   }
 }
-
 main();
 
 // Middlewares
 app.use(cors());
-app.use(express.json()); // necessário para req.body
+app.use(express.json());
 
 // Rotas
-app.get('/', (req, res) => {
-  res.send('test');
-});
-app.use('/', authRouter); // registra POST /register
+app.use('/register', authRouter);
 
-// 404 para outras rotas
+// Catch-all 404
 app.use((req, res) => {
   res.status(404).json({ error: 'Not Found' });
 });
 
-// Lança o servidor
-app.listen(port, () => {
-  console.log(`Servidor rodando em: http://localhost:${port}`);
-});
+// Exporta o app como função serverless para o Vercel
+module.exports = app;
