@@ -23,7 +23,7 @@ export default function LoginForm({ inputs, onSubmit, method = 'post' }) {
       })}
       <div className="lost-password-wrapper">
         <a href="/lost-password">Esqueceu sua senha?</a>
-        <Button type="submit" content="Submit"></Button>
+        <Button type="submit" content="Submit" set="primary"></Button>
       </div>
     </form>
   );
